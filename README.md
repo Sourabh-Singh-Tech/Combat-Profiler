@@ -1,28 +1,48 @@
-# Combat Profiler
-# Kick-Detection-and-pose-estimation
-This project is used to detect and count number of kicks in a sample video. It uses Mediapipe for Pose detection and drawing the landmarks over it, it also uses Yolov3 to tackle a problem of multiple person detection which occurs with Mediapipe. A Machine learning model is trained on a dataset for "Kicking" and "Standing" and uses it for detection.
-<br />
-Note: To run this project on local system download the files and follow the steps mentioned in the notebook
+# Kick Detection and Pose Estimation
 
-## Clone darknet folder and Load YOLOv3 model
-```
-!git clone https://github.com/pjreddie/darknet
-```
-## Download the weights and make the file
-``` 
-!make
-```
-```
-!wget https://pjreddie.com/media/files/yolov3.weights
-```
-### With mediapipe there's a problem that it can detect and perform pose landmark detection over a single person, but our project aim was to perfrom kick detection over multiple person so we integrated Yolov3 object detection model to solve this problem.
-<br />
-## The Yolov3 model in our project is used to detect "Person" which has class=0 in Yolo and draw a box over them so that to run mediapipe on each person and run our model over it
-## Apply NMS
-## Applying Mediapipe Pose landmark detection
-## Training a custom dataset of "Kicking" and "Standing" class using mediapipe and storing the data in a output CSV file
-To directly use this model refer to the "fitness_poses_csvs_out.csv" file otherwise create your custom dataset for your different class for example pushup, punch or jump using the steps mentioned in the notebook.
-## Apply the tranied model and use it to on detected multiple person to detect and count number of kicks
+This project is designed to detect and count kicks, standing postures, and punches in a video. It combines the power of *Mediapipe* for pose estimation and *YOLOv3/YOLOv5* for multi-person object detection, overcoming the limitations of pose detection models for multi-person scenarios. A machine learning model has been trained on custom datasets to classify actions into three categories: *Kick, **Standing, and **Punches*.
+
+---
+
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Demo](#demo)
+- [References](#references)
+
+---
+
+## Project Overview
+
+### Key Objectives:
+1. *Kick Detection*: Detect and count kicks performed by individuals in the video.
+2. *Standing Detection*: Identify standing postures for activity tracking.
+3. *Punches Detection*: Detect punching actions for comprehensive activity analysis.
+
+### Why YOLO?
+- Mediapipe is efficient for pose detection but works best with a single person in the frame. To address multi-person scenarios, *YOLOv3/YOLOv5* is integrated to detect multiple people and track their actions efficiently.
+
+---
+
+## Features
+
+1. *Multi-Person Detection*:
+   - YOLOv3/YOLOv5 is used to detect persons (class=0 in YOLO) in a frame and draw bounding boxes.
+   - Non-Maximum Suppression (NMS) is applied to remove overlapping bounding boxes and retain the one with the highest confidence.
+
+2. *Pose Estimation*:
+   - Mediapipe is used for pose detection within each bounding box to track landmarks for each individual.
+
+3. *Custom Model Training*:
+   - A custom dataset for "Kick," "Standing," and "Punches" classes is created using Mediapipe.
+   - The dataset is stored in a CSV file and used to train the model. (Refer to fitness_poses_csvs_out.csv for the dataset.)
+
+4. *Action Classification*:
+   - The trained model is applied to classify detected actions and count the occurrences.
+
+---
+
+## Demo 
 ## References
 https://developers.google.com/mediapipe/solutions/vision/pose_landmarker/python
 <br />
