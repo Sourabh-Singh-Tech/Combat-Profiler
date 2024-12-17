@@ -43,6 +43,7 @@ This project is designed to detect and count kicks, standing postures, and punch
 ---
 
 ## Demo 
+https://github.com/Sourabh-Singh-Tech/Combat-Profiler/blob/main/Combat%20Profiler%20Demo.mp4
 ## References
 https://developers.google.com/mediapipe/solutions/vision/pose_landmarker/python
 <br />
