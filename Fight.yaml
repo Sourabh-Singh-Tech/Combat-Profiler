@@ -1,0 +1,10 @@
+path: ../FinalDatasetLD
+train: train/images  
+val: valid/images  
+test: test/images 
+
+# Classes
+names:
+  0: kicking
+  1: standing
+  2: punching
